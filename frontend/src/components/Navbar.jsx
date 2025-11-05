@@ -1,19 +1,20 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav style={{
-      background: '#222',
-      padding: '1rem',
-      color: 'white',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center'
-    }}>
-      <h2>🛍️ Mi Tienda</h2>
-      <div>
-        <Link to="/" style={{ color: 'white', marginRight: '20px' }}>Inicio</Link>
-        <Link to="/success" style={{ color: 'white' }}>Mis compras</Link>
+    <nav className="bg-blue-600 text-white shadow-md">
+      <div className="container mx-auto flex justify-between items-center px-6 py-4">
+        <Link to="/" className="text-2xl font-bold tracking-wide">
+          🛍️ Mi Tienda
+        </Link>
+        <div className="space-x-6">
+          <Link to="/" className="hover:underline">
+            Inicio
+          </Link>
+          <Link to="/success" className="hover:underline">
+            Mis compras
+          </Link>
+        </div>
       </div>
     </nav>
   );

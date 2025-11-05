@@ -12,8 +12,8 @@ async function bootstrap() {
 
 // En desarrollo usa origenes especificos; aquí se permite todo para dev
   app.enableCors({
-    origin: true,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    origin: ['http://localhost:5173', 'http://localhost:5174'], // tus posibles puertos de front
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     credentials: true,
   });
 
