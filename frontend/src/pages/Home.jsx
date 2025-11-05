@@ -24,35 +24,35 @@ const Home = () => {
     }
   };
 
+  
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <h1 className="text-3xl font-semibold text-center mb-10 text-gray-800">
-        Tienda de Electrónicos
-      </h1>
+    <div className="home-container">
+      <h1 className="home-title">Tienda de Electrónicos</h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="bg-white rounded-2xl shadow-md hover:shadow-lg p-5 flex flex-col items-center transition-transform hover:scale-105"
-          >
-            <img
-              src={`${import.meta.env.VITE_API_URL}/public/images/${product.image.split('/').pop()}`}
-              alt={product.name}
-              width="200"
-            />
-            <h2 className="text-lg font-semibold text-gray-800 text-center">
-              {product.name}
-            </h2>
-            <p className="text-gray-500 mt-1 mb-3">${product.price} MXN</p>
-            <button
-              className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition"
-              onClick={() => handleBuy(product)}
-            >
-              Comprar
-            </button>
-          </div>
-        ))}
+      <div className="container">
+        <div className="row">
+          {products.map((product) => (
+            <div key={product.id} className="col-12 col-sm-6 col-md-4 mb-4">
+              <div className="card product-card h-100 text-center">
+                <img
+                  src={`${import.meta.env.VITE_API_URL}/public/images/${product.image.split("/").pop()}`}
+                  className="card-img-top mx-auto d-block product-img"
+                  alt={product.name}
+                />
+                <div className="card-body">
+                  <h5 className="card-title">{product.name}</h5>
+                  <p className="card-text">${product.price} MXN</p>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => handleBuy(product)}
+                  >
+                    Comprar
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

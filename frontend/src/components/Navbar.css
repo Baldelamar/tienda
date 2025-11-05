@@ -1,0 +1,42 @@
+/* Navbar base */
+.navbar {
+  background-color: #0d6efd; /* Azul Bootstrap */
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor */
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.navbar-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+
+/* Enlaces */
+.navbar-links {
+  display: flex;
+  gap: 25px;
+}
+
+/* Link individual */
+.nav-link {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
