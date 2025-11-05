@@ -37,9 +37,9 @@ const Home = () => {
             className="bg-white rounded-2xl shadow-md hover:shadow-lg p-5 flex flex-col items-center transition-transform hover:scale-105"
           >
             <img
-              src={product.image}
+              src={`${import.meta.env.VITE_API_URL}/public/images/${product.image.split('/').pop()}`}
               alt={product.name}
-              className="w-48 h-48 object-contain mb-4"
+              width="200"
             />
             <h2 className="text-lg font-semibold text-gray-800 text-center">
               {product.name}

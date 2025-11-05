@@ -17,7 +17,7 @@ async function bootstrap() {
     credentials: true,
   });
 
-  app.use('/public', express.static(join(__dirname, '..', 'public')));
+ app.use('/public', express.static(join(__dirname, '..', 'public')));
 
   await app.listen(port);
   console.log(`Servidor escuchando en: http://localhost:${port}`);
