@@ -2,14 +2,15 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { StripeService } from './stripe.service';
 import { CreateStripeDto } from './dto/create-stripe.dto';
 import { UpdateStripeDto } from './dto/update-stripe.dto';
+import { Product } from 'src/products/entities/product.entity';
 
 @Controller('stripe')
 export class StripeController {
   constructor(private readonly stripeService: StripeService) {}
 
-  @Post()
-  create(@Body() createStripeDto: CreateStripeDto) {
-    return this.stripeService.create(createStripeDto);
+  @Post('checkout')
+  async createCheckout(@Body() product: Product) {
+    return this.stripeService.createCheckoutSession(product);
   }
 
   @Get()

@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
+import * as express from 'express';
+import { join } from 'path';
 
 
 async function bootstrap() {
@@ -14,6 +16,8 @@ async function bootstrap() {
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
+
+  app.use('/public', express.static(join(__dirname, '..', 'public')));
 
   await app.listen(port);
   console.log(`Servidor escuchando en: http://localhost:${port}`);

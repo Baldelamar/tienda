@@ -31,8 +31,8 @@ export class StripeService {
           quantity: 1,
         },
       ],
-      success_url: `${this.configService.get('FRONTEND_URL')}/success`,
-      cancel_url: `${this.configService.get('FRONTEND_URL')}/cancel`,
+       success_url: 'http://localhost:3000/success',
+        cancel_url: 'http://localhost:3000/cancel',
     });
 
     return { url: session.url };
