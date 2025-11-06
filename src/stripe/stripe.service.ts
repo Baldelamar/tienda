@@ -4,6 +4,7 @@ import { CreateStripeDto } from './dto/create-stripe.dto';
 import { UpdateStripeDto } from './dto/update-stripe.dto';
 import Stripe  from 'stripe';
 import { Product } from 'src/products/entities/product.entity';
+import { env } from 'process';
 
 @Injectable()
 export class StripeService {
@@ -14,6 +15,7 @@ export class StripeService {
   }
 
     async createCheckoutSession(Product: any) {
+      const domain = this.configService.get<string>('YOUR_DOMAIN');
     const session = await this.stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
@@ -31,8 +33,8 @@ export class StripeService {
           quantity: 1,
         },
       ],
-       success_url: 'http://localhost:5174/success',
-        cancel_url: 'http://localhost:5174/cancel',
+       success_url: `${domain}/success`,
+       cancel_url: `${domain}/cancel`,
     });
 
     return { url: session.url };
