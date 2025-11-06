@@ -1,23 +1,32 @@
 import { useEffect, useState } from "react";
 
 const Home = () => {
+   // SE CREA UN ESTADO PARA GUARDAR LOS PRODUCTOS QUE VIENEN DEL BACKEND
+   // EN REACT, un estado (state) es una variable especial que guarda información que puede cambiar con el tiempo y que, 
+   // cuando cambia, React actualiza automáticamente la interfaz
   const [products, setProducts] = useState([]);
 
+  // SE EJECUTA CUANDO SE CARGA EL COMPONENTE
   useEffect(() => {
+    // SE HACE UNA PETICIÓN GET AL ENDPOINT /products DE LA API
     fetch(`${import.meta.env.VITE_API_URL}/products`)
-      .then((res) => res.json())
-      .then((data) => setProducts(data))
-      .catch((err) => console.error("Error al obtener productos:", err));
+      .then((res) => res.json()) // CONVIERTE LA RESPUESTA EN JSON
+      .then((data) => setProducts(data)) // GUARDA LOS PRODUCTOS EN EL ESTADO
+      .catch((err) => console.error("Error al obtener productos:", err)); // SI HAY UN ERROR, LO MUESTRA EN CONSOLA
   }, []);
 
   const handleBuy = async (product) => {
+     // CUANDO EL USUARIO HACE CLICK EN “COMPRAR” SE EJECUTA ESTA FUNCIÓN
+      // SE ENVÍA UNA PETICIÓN POST AL ENDPOINT /stripe/checkout
+      // EN EL CUERPO DE LA PETICIÓN SE ENVÍA EL PRODUCTO QUE EL USUARIO QUIERE COMPRAR
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/stripe/checkout`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json" }, // SE INDICA QUE SE ENVÍA JSON
         body: JSON.stringify(product),
       });
       const data = await res.json();
+       // AQUÍ SE REDIRIGE AUTOMÁTICAMENTE AL USUARIO A ESA PÁGINA
       window.location.href = data.url;
     } catch (err) {
       console.error("Error al crear sesión de pago:", err);
@@ -26,8 +35,9 @@ const Home = () => {
 
   
   return (
+    // HTML CON LOS PRODUCTOS YA CARGADOS
     <div className="home-container">
-      <h1 className="home-title">Tienda de Electrónicos</h1>
+      <h1 className="titulo" >Tienda de Electrónicos</h1>
 
       <div className="container">
         <div className="row">

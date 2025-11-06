@@ -1,3 +1,4 @@
+// ES EL MODELO QUE REPRESENTA LA ENTIDAD PRODUCTO
 export class Product {
     id: number;
     name: string;

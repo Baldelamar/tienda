@@ -8,7 +8,6 @@ export default function Navbar() {
         <Link to="/" className="navbar-logo">Mi Tienda</Link>
         <div className="navbar-links">
           <Link to="/" className="nav-link">Inicio</Link>
-          <Link to="/success" className="nav-link"> Mis compras</Link>
         </div>
       </div>
     </nav>

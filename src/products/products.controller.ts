@@ -6,17 +6,41 @@ import { Product } from './entities/product.entity';
 
 @Controller('products')
 export class ProductsController {
+  // IMPORTA EL SERVICIO DE PRODUCTOS PARA USAR SUS FUNCIONES
   constructor(private readonly productsService: ProductsService) {}
+
+  // RUTA PARA OBTENER TODOS LOS PRODUCTOS
+  @Get()
+   // AQUÍ SE LLAMA AL MÉTODO findAll() DEL SERVICIO DE PRODUCTOS
+  // ESTE MÉTODO DEVUELVE LA LISTA DE PRODUCTOS GUARDADOS EN EL SERVICIO
+  findAll(): Product[] {
+    return this.productsService.findAll();
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   @Post()
   create(@Body() createProductDto: CreateProductDto) {
     return this.productsService.create(createProductDto);
-  }
-
-  // RUTA PARA OBTENER TODOS LOS PRODUCTOS
-  @Get()
-  findAll(): Product[] {
-    return this.productsService.findAll();
   }
 
   @Get(':id')

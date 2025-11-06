@@ -7,8 +7,12 @@ import { Product } from './entities/product.entity';
 
 @Injectable()
 export class ProductsService {
+
+  // SE DEFINE UNA URL BASE DONDE ESTÁN LAS IMÁGENES DE LOS PRODUCTOS
   private readonly baseUrl = 'http://localhost:3001/public/';
   
+// AQUÍ SE DECLARA UN ARREGLO DE PRODUCTOS
+// CADA PRODUCTO TIENE: ID, NOMBRE, DESCRIPCIÓN, PRECIO E IMAGEN
   private products: Product[] = [
     {
       id: 1,
@@ -96,6 +100,7 @@ export class ProductsService {
     },
   ];
 
+  // ESTE MÉTODO SE LLAMA DESDE EL CONTROLADOR PARA DEVOLVER TODOS LOS PRODUCTOS
     findAll(): Product[] {
     return this.products;
   }
